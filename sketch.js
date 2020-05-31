@@ -12,19 +12,21 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  //packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:1.5, isStatic:false});
-  //World.add(world, packageBody);
-
   ball = new Paper(300, 200, 75, 75);
-
-  box = new Box(900, 490, 200, 200);
-
-  //   Create a Ground
-  //     ground = Bodies.rectangle(width / 2, 600, width, 10, { isStatic: true });
-  //     World.add(world, ground);
+  box = new Box(900, 577, 200, 200);
   ground = new Ground(600, height, 1200, 20);
 
+  var render = Render.create({
+    element: document.body,
+    engine: engine,
+    options: {
+      width: 1600,
+      height: 700,
+      wireframes: false,
+    },
+  });
   Engine.run(engine);
+  Render.run(render);
 }
 
 function draw() {
@@ -40,8 +42,8 @@ function draw() {
 function keyPressed() {
   if (keyCode === UP_ARROW) {
     Matter.Body.applyForce(ball.body, ball.body.position, {
-      x: 302,
-      y: -302,
+      x: 332,
+      y: -332,
     });
   }
 }
